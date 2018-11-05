@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <!--<link rel="apple-touch-icon" href="images/icon.png"/>
     <link rel="apple-touch-startup-image" href="images/icon.png" />-->
-    <title>程序员之火</title>
+    <title>*****</title>
     <script src="js/hilo-standalone.js"></script>
     <style type="text/css">
         body, div, canvas{
@@ -27,15 +27,22 @@
     var stage = new Hilo.Stage({
         renderType:'canvas',
         container: document.getElementById('canvasEle'),
-        width: 320,
-        height: 480
+        width: 640,
+        height: 960,
+        scaleX: 0.5,
+        scaleY: 0.5
     });
     var bird = new Hilo.Bitmap({
-        image: 'images/bird.png'
+        image: 'images/purebg.png'
     }).addTo(stage);
     var ticker = new Hilo.Ticker(60);
     ticker.addTick(stage);
     ticker.start();
+
+    stage.enableDOMEvent(Hilo.event.POINTER_START, true);
+    bird.on(Hilo.event.POINTER_START, function(e){
+        console.log(e.eventTarget, e.stageX, e.stageY);
+    });
 </script>
 
 </body>
