@@ -32,17 +32,40 @@
         scaleX: 0.5,
         scaleY: 0.5
     });
-    var bird = new Hilo.Bitmap({
+
+    var background = new Hilo.Bitmap({
         image: 'images/purebg.png'
     }).addTo(stage);
+
+    var leftArrow = new Hilo.Bitmap({
+        image: 'images/leftarrow.jpg',
+        x:0,
+        y:300
+    }).addTo(stage);
+
+    var rightArrow = new Hilo.Bitmap({
+        image: 'images/rightarrow.jpg',
+        x:540,
+        y:300
+    }).addTo(stage);
+
     var ticker = new Hilo.Ticker(60);
     ticker.addTick(stage);
     ticker.start();
 
     stage.enableDOMEvent(Hilo.event.POINTER_START, true);
-    bird.on(Hilo.event.POINTER_START, function(e){
-        console.log(e.eventTarget, e.stageX, e.stageY);
+    leftArrow.on(Hilo.event.POINTER_START,function(e) {
+        console.log('left arrow');
+        var background = new Hilo.Bitmap({
+            image: 'images/page1.jpg'
+        }).addTo(stage);
     });
+    rightArrow.on(Hilo.event.POINTER_START,function(e) {
+        console.log('right arrow');
+    })
+    /*background.on(Hilo.event.POINTER_START, function(e){
+        console.log(e.eventTarget, e.stageX, e.stageY);
+    });*/
 </script>
 
 </body>
